@@ -3,7 +3,7 @@ env:
   RUSTFLAGS: -Dwarnings
   CARGO_TERM_COLOR: always
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  PG_VER: 16
+  PG_VER: 17
 
 on:
   pull_request_target:
@@ -45,6 +45,9 @@ jobs:
       - uses: actions-rust-lang/setup-rust-toolchain@v1
       - name: Install PostgreSQL
         run: |
+          sudo apt install -y wget gnupg
+          sudo sh -c 'echo "deb https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+          wget --quiet -O- https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
           sudo apt update -y -qq
           sudo apt install -y postgresql-server-dev-$PG_VER
       - name: Install cargo pgrx
