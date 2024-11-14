@@ -38,7 +38,7 @@ jobs:
           - command: clippy
             args: --all-features --workspace
           - command: pgrx test
-            args: --all-features
+            args: --all-features --runas postgres --pgdata=/tmp/pgdata
     steps:
       - uses: actions/checkout@v4
       - uses: Swatinem/rust-cache@v2
@@ -51,8 +51,8 @@ jobs:
           sudo apt update -y -qq
           sudo apt install -y postgresql-server-dev-$PG_VER
       - name: Install cargo pgrx
-        run: cargo install --path cargo-pgrx
+        run: cargo install cargo-pgrx
       - name: cargo pgrx init
         run: cargo pgrx init "--pg$PG_VER=$(which pg_config)"
       - name: Run Command
-        run: cargo ${{ matrix.action.command }} ${{ matrix.action.args }} --runas postgres --pgdata=/tmp/pgdata
+        run: cargo ${{ matrix.action.command }} ${{ matrix.action.args }}
