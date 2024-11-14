@@ -37,22 +37,22 @@ jobs:
             args: --all -- --check
           - command: clippy
             args: --all-features --workspace
-          - command: pgrx test
-            args: --all-features --runas postgres --pgdata=/tmp/pgdata
     steps:
       - uses: actions/checkout@v4
       - uses: Swatinem/rust-cache@v2
       - uses: actions-rust-lang/setup-rust-toolchain@v1
+      - name: Run Matrix Command
+        run: cargo ${{ matrix.action.command }} ${{ matrix.action.args }}
       - name: Install PostgreSQL
         run: |
           sudo apt install -y wget gnupg
           sudo sh -c 'echo "deb https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
           wget --quiet -O- https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
           sudo apt update -y -qq
-          sudo apt install -y postgresql-server-dev-$PG_VER
+          sudo apt install -y postgresql-$PG_VER postgresql-server-dev-$PG_VER
       - name: Install cargo pgrx
         run: cargo install cargo-pgrx
       - name: cargo pgrx init
         run: cargo pgrx init "--pg$PG_VER=$(which pg_config)"
-      - name: Run Command
-        run: cargo ${{ matrix.action.command }} ${{ matrix.action.args }}
+      - name: cargo pgrx test
+        run: cargo pgrx test --all-features --runas postgres --pgdata=/tmp/pgdata
