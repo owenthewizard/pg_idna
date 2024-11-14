@@ -44,7 +44,9 @@ jobs:
       - uses: Swatinem/rust-cache@v2
       - uses: actions-rust-lang/setup-rust-toolchain@v1
       - name: Install PostgreSQL
-        run: sudo apt install -y postgresql-server-dev-$PG_VER
+        run: |
+          sudo apt update -y -qq --fix-broken
+          sudo apt install -y postgresql-server-dev-$PG_VER
       - name: Install cargo pgrx
         run: cargo install --path cargo-pgrx
       - name: cargo pgrx init
