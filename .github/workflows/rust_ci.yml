@@ -1,0 +1,48 @@
+name: Rust Continuous Integration
+env:
+  RUSTFLAGS: -Dwarnings
+  CARGO_TERM_COLOR: always
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+on:
+  pull_request_target:
+    types:
+      - opened
+      - synchronize
+      - reopened
+    branches:
+      - master
+    paths-ignore:
+      - "**/*.md"
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - "**/*.md"
+
+jobs:
+  rust-checks:
+    name: Rust Checks
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        action:
+          - command: build
+            args: --release
+          - command: fmt
+            args: --all -- --check
+          - command: clippy
+            args: --all-features --workspace
+          - command: test
+            args: --all-features --workspace
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Setup Rust Toolchain
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+      - name: Enable Caching
+        uses: Swatinem/rust-cache@v2
+      - name: Run Command
+        run: cargo ${{ matrix.action.command }} ${{ matrix.action.args }}
