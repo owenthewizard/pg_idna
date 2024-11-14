@@ -1,0 +1,50 @@
+[package]
+name = "pg_idna"
+version = "0.1.0"
+authors = ["Owen Walpole <owen@walpole.dev>"]
+edition = "2021"
+description = "WHATWG URL IDNA helpers for PostgreSQL"
+# TODO
+documentation = "https://docs.rs/pg_idna"
+readme = "README.md"
+homepage = "https://github.com/owenthewizard/pg_idna"
+repository = "https://github.com/owenthewizard/pg_idna"
+license = "MIT OR Apache-2.0"
+keywords = ["postgresql", "idn"]
+categories = ["database", "encoding", "internationalization"]
+
+[package.metadata.docs.rs]
+rustdoc-args = ["--document-private-items"]
+
+[lib]
+crate-type = ["cdylib", "lib"]
+
+[[bin]]
+name = "pgrx_embed_pg_idna"
+path = "./src/bin/pgrx_embed.rs"
+
+[features]
+default = ["pg17"]
+pg12 = ["pgrx/pg12", "pgrx-tests/pg12" ]
+pg13 = ["pgrx/pg13", "pgrx-tests/pg13" ]
+pg14 = ["pgrx/pg14", "pgrx-tests/pg14" ]
+pg15 = ["pgrx/pg15", "pgrx-tests/pg15" ]
+pg16 = ["pgrx/pg16", "pgrx-tests/pg16" ]
+pg17 = ["pgrx/pg17", "pgrx-tests/pg17" ]
+pg_test = []
+
+[dependencies]
+idna = "1"
+pgrx = "0.12"
+
+[dev-dependencies]
+pgrx-tests = "0.12"
+
+[profile.dev]
+panic = "unwind"
+
+[profile.release]
+panic = "unwind"
+opt-level = 3
+lto = "fat"
+codegen-units = 1
