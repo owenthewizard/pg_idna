@@ -45,7 +45,7 @@ jobs:
       - uses: actions-rust-lang/setup-rust-toolchain@v1
       - name: Install PostgreSQL
         run: |
-          sudo apt update -y -qq --fix-broken
+          sudo apt update -y -qq
           sudo apt install -y postgresql-server-dev-$PG_VER
       - name: Install cargo pgrx
         run: cargo install --path cargo-pgrx
