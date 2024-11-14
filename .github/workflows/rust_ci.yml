@@ -32,4 +32,4 @@ jobs:
       - uses: Swatinem/rust-cache@v2
       - uses: actions-rust-lang/setup-rust-toolchain@v1
       - name: Cargo Format
-        run: cargo fmt --all -- --check
+        run: cargo fmt --all -- --check
