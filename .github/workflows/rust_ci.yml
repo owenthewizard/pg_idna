@@ -1,4 +1,4 @@
-name: Rust Continuous Integration
+name: Continuous Integration
 env:
   RUSTFLAGS: -Dwarnings
   CARGO_TERM_COLOR: always
