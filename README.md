@@ -2,6 +2,16 @@
 
 [WHATWG URL IDNA](https://url.spec.whatwg.org/#idna) helpers for PostgreSQL.
 
+[![Rust](https://img.shields.io/badge/Language-Rust-blue?style=flat-square)](https://www.rust-lang.org)
+[![Build Status](https://github.com/owenthewizard/pg_idna/actions/workflows/rust_ci.yml/badge.svg?style=flat-square)](https://github.com/owenthewizard/pg_idna/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)](https://opensource.org/licenses/MIT)
+[![License: Apache](https://img.shields.io/badge/License-Apache-green?style=flat-square)](https://opensource.org/licenses/Apache-2-0)
+[![Crates.io](https://img.shields.io/crates/v/pg_idna?style=flat-square)](https://crates.io/crates/pg_idna)
+[![Contributors](https://img.shields.io/github/contributors/owenthewizard/pg_idna?style=flat-square)](https://github.com/owenthewizard/pg_idna/graphs/contributors)
+[![GitHub forks](https://img.shields.io/github/forks/owenthewizard/pg_idna?style=flat-square)](https://github.com/owenthewizard/pg_idna/network/members)
+[![Stars](https://img.shields.io/github/stars/owenthewizard/pg_idna?style=flat-square)](https://github.com/owenthewizard/pg_idna/stargazers)
+[![Issues](https://img.shields.io/github/issues/owenthewizard/pg_idna?style=flat-square)](https://github.com/owenthewizard/pg_idna/issues)
+
 ## ▶️ Quick Start
 
 ### 🏗️ Build & Run
