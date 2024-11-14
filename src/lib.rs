@@ -51,12 +51,7 @@ fn idna_to_ascii(
     let dl = MyDnsLength::from_str(dl).expect("invalid argument");
 
     uts46
-        .to_ascii(
-            input.as_bytes(),
-            *adl.inner(),
-            *h.inner(),
-            *dl.inner(),
-        )
+        .to_ascii(input.as_bytes(), *adl.inner(), *h.inner(), *dl.inner())
         .expect("ToAscii conversion failed")
         .into_owned()
 }
@@ -78,7 +73,11 @@ fn idna_to_ascii(
 ///
 /// For more information, see [Uts46::to_unicode].
 #[pg_extern]
-fn idna_to_unicode(input: &str, adl: default!(&str, "'url'"), h: default!(&str, "'allow'")) -> String {
+fn idna_to_unicode(
+    input: &str,
+    adl: default!(&str, "'url'"),
+    h: default!(&str, "'allow'"),
+) -> String {
     let uts46 = Uts46::new();
     let adl = MyAsciiDenyList::from_str(adl).expect("invalid argument");
     let h = MyHyphens::from_str(h).expect("invalid argument");
@@ -103,7 +102,11 @@ fn idna_to_unicode(input: &str, adl: default!(&str, "'url'"), h: default!(&str, 
 ///
 /// For more information, see [`Uts46::to_unicode`].
 #[pg_extern]
-fn idna_to_unicode_lossy(input: &str, adl: default!(&str, "'url'"), h: default!(&str, "'allow'")) -> String {
+fn idna_to_unicode_lossy(
+    input: &str,
+    adl: default!(&str, "'url'"),
+    h: default!(&str, "'allow'"),
+) -> String {
     let uts46 = Uts46::new();
     let adl = MyAsciiDenyList::from_str(adl).expect("invalid argument");
     let h = MyHyphens::from_str(h).expect("invalid argument");
@@ -119,13 +122,7 @@ fn idna_to_unicode_internal(
     h: MyHyphens,
     lossy: bool,
 ) -> String {
-
-    let (out, res) = uts46
-        .to_unicode(
-            input.as_bytes(),
-            *adl.inner(),
-            *h.inner(),
-        );
+    let (out, res) = uts46.to_unicode(input.as_bytes(), *adl.inner(), *h.inner());
 
     if res.is_ok() || lossy {
         out.into_owned()
@@ -137,7 +134,6 @@ fn idna_to_unicode_internal(
 #[cfg(any(test, feature = "pg_test"))]
 #[pg_schema]
 mod tests {
-    
 
     /*
     #[pg_test]
