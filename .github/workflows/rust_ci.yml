@@ -3,7 +3,7 @@ env:
   RUSTFLAGS: -Dwarnings
   CARGO_TERM_COLOR: always
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  PG_VER: 17
+  PG_VER: 16
 
 on:
   pull_request_target:
