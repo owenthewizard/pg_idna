@@ -13,13 +13,13 @@ on:
       - reopened
     branches:
       - master
-    paths-ignore:
-      - "**/*.md"
+    paths:
+      - "**/*.rs"
   push:
     branches:
       - master
-    paths-ignore:
-      - "**/*.md"
+    paths:
+      - "**/*.rs"
 
 jobs:
   rust-format:
