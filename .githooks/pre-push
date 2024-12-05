@@ -30,7 +30,7 @@ done
 if rustup toolchain list | grep -Fq nightly && command -v wrangler >/dev/null; then
 	set -e
     cargo +nightly clean --doc
-	cargo +nightly -Zrustdoc-map doc --no-deps --document-private-items
+	cargo +nightly -Zrustdoc-map doc --no-deps
 	cp -Ru target/doc/* docs/public/
 	cd docs
 	wrangler deploy --name pg-idna-docs --minify true
