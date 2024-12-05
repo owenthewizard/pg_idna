@@ -1,6 +1,6 @@
 # 🌐 pg_idna
 
-[WHATWG URL IDNA](https://url.spec.whatwg.org/#idna) helpers for PostgreSQL.
+[IDNA](https://crates.io/crates/idna) helpers for PostgreSQL.
 
 [![Rust](https://img.shields.io/badge/Language-Rust-blue?style=flat-square)](https://www.rust-lang.org)
 [![Build Status](https://github.com/owenthewizard/pg_idna/actions/workflows/rust_ci.yml/badge.svg?style=flat-square)](https://github.com/owenthewizard/pg_idna/actions)
@@ -69,6 +69,4 @@ See LICENSE-APACHE and LICENSE-MIT for details.
 ## 🫶 Acknowledgements
 
 - [rust-url/idna](https://crates.io/crates/idna) by [The Servo Project Developers](https://servo.org/)
-  - `ToAscii` and `ToUnicode` implementation
 - [pgrx](https://crates.io/crates/pgrx) by Various Authors
-  - Create PostgreSQL extensions in Rust, in minutes.

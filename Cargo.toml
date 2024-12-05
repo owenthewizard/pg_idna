@@ -1,9 +1,9 @@
 [package]
 name = "pg_idna"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Owen Walpole <owen@walpole.dev>"]
 edition = "2021"
-description = "WHATWG URL IDNA helpers for PostgreSQL"
+description = "IDNA helpers for PostgreSQL"
 # TODO
 documentation = "https://docs.rs/pg_idna"
 readme = "README.md"
