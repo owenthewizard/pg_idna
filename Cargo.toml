@@ -1,20 +1,16 @@
 [package]
 name = "pg_idna"
-version = "0.1.1"
+version = "0.1.1+docs"
 authors = ["Owen Walpole <owen@walpole.dev>"]
 edition = "2021"
 description = "IDNA helpers for PostgreSQL"
-# TODO
-documentation = "https://docs.rs/pg_idna"
+documentation = "https://pg-idna-docs.owenthewizard.workers.dev/pg_idna/"
 readme = "README.md"
 homepage = "https://github.com/owenthewizard/pg_idna"
 repository = "https://github.com/owenthewizard/pg_idna"
 license = "MIT OR Apache-2.0"
-keywords = ["postgresql", "idn"]
+keywords = ["postgresql", "idn", "idna"]
 categories = ["database", "encoding", "internationalization"]
-
-[package.metadata.docs.rs]
-rustdoc-args = ["--document-private-items"]
 
 [lib]
 crate-type = ["cdylib", "lib"]
