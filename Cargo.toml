@@ -1,6 +1,6 @@
 [package]
 name = "pg_idna"
-version = "0.1.1+docs"
+version = "0.1.1-docs"
 authors = ["Owen Walpole <owen@walpole.dev>"]
 edition = "2021"
 description = "IDNA helpers for PostgreSQL"
